@@ -1,0 +1,44 @@
+{
+  "judul": "Identifikasi jenis noda pakaian dan metode pembersihannya",
+  "batas": "Aturan berasal dari panduan Cooperative Extension universitas di Amerika Serikat (NMSU, Mississippi State, Illinois, Cornell, Texas A&M) dan situs pemerintah negara bagian Michigan. Berlaku untuk pakaian kain yang boleh dicuci di rumah. Hasilnya saran awal, bukan keputusan akhir: selalu baca label perawatan dan uji di bagian kain yang tersembunyi.",
+  "sumber": {
+    "S1": "Removing Clothing Stains (Guide C-502), Wendy Hamilton, New Mexico State University Cooperative Extension Service, https://pubs.nmsu.edu/_c/C502/",
+    "S2": "Stain Removal Guide (P1400), Mississippi State University Extension Service, https://extension.msstate.edu/sites/default/files/publications/publications/p1400.pdf",
+    "S3": "Treatments Remove Frustrating Stains, Bethany Waldrop Keiper, Mississippi State University Extension Service, https://extension.msstate.edu/node/19652",
+    "S4": "General Suggestions for Washable Fabrics, University of Illinois Extension, https://dev.web.extension.illinois.edu/stain/general_fabrics.cfm",
+    "S5": "Removing Stains at Home, Judy L. Price dan Ann T. Lemley, Cornell Cooperative Extension, 2003, https://hdl.handle.net/1813/3710",
+    "S6": "Removing Stains from Washable Fabrics (B-1616), Ann Vanderpoorten Beard, Texas Agricultural Extension Service, Texas A&M University System, 1989, https://core.ac.uk/download/147229781.pdf",
+    "S7": "Tips for getting stains out of your laundry, State of Michigan (michigan.gov), https://www.michigan.gov/en/fyit/housing/tips-for-getting-stains-out-of-your-laundry",
+    "S8": "Mississippi State University Extension Service, halaman penanganan noda darah, https://extension.msstate.edu/node/7658"
+  },
+  "aturan": [
+    {"id": "R1", "tipe": "antara", "jika": ["noda teraba licin atau berminyak", "noda berasal dari masakan berlemak, oli, atau minyak goreng"], "mode": "atau", "maka": "bahan berminyak", "sumber": ["S2"]},
+    {"id": "R2", "tipe": "antara", "jika": ["noda berasal dari darah, daging, ikan, telur, atau susu", "noda berasal dari keringat"], "mode": "atau", "maka": "bahan protein", "sumber": ["S3", "S6"]},
+    {"id": "R3", "tipe": "antara", "jika": ["noda berasal dari kopi, teh, jus buah, atau saus tomat", "noda berasal dari buah atau sayuran berwarna"], "mode": "atau", "maka": "bahan tanin", "sumber": ["S2", "S6"]},
+    {"id": "R4", "tipe": "antara", "jika": ["noda berasal dari pulpen atau spidol", "noda berasal dari tinta cair"], "mode": "atau", "maka": "bahan tinta", "sumber": ["S2", "S7"]},
+
+    {"id": "R5", "tipe": "jenis", "jika": ["bahan berminyak"], "mode": "dan", "maka": "noda minyak/lemak", "sumber": ["S2"]},
+    {"id": "R6", "tipe": "jenis", "jika": ["bahan protein"], "mode": "dan", "maka": "noda protein (darah, telur, susu, keringat)", "sumber": ["S3", "S6"]},
+    {"id": "R7", "tipe": "jenis", "jika": ["bahan tanin"], "mode": "dan", "maka": "noda tanin (kopi, teh, buah)", "sumber": ["S2", "S6"]},
+    {"id": "R8", "tipe": "jenis", "jika": ["bahan tinta"], "mode": "dan", "maka": "noda tinta", "sumber": ["S2", "S7"]},
+    {"id": "R9", "tipe": "jenis", "jika": ["bahan berminyak", "bahan protein"], "mode": "dan", "maka": "noda kombinasi (minyak + protein)", "sumber": ["S2", "S3"]},
+    {"id": "R10", "tipe": "jenis", "jika": ["asal noda tidak diketahui"], "mode": "dan", "maka": "noda tidak dikenal", "sumber": ["S4"]},
+
+    {"id": "R11", "tipe": "metode", "jika": ["noda minyak/lemak"], "mode": "dan", "maka": "metode noda minyak/lemak",
+     "saran": "Kerok lemak yang menempel di permukaan kain, oleskan pra-pembersih atau sabun cuci piring cair, diamkan beberapa menit, lalu cuci dengan air terpanas yang aman untuk kain. Jika masih membekas, keringkan kain, spons dengan pelarut lemak, lalu angin-anginkan agar bau pelarut hilang.", "sumber": ["S1", "S2"]},
+    {"id": "R12", "tipe": "metode", "jika": ["noda protein (darah, telur, susu, keringat)"], "mode": "dan", "maka": "metode noda protein",
+     "saran": "Rendam dalam air dingin sekitar 30 menit, gosokkan deterjen pada sisa noda, bilas, lalu cuci. Jangan pakai air panas karena dapat membuat noda protein menetap. Produk berbahan enzim membantu.", "sumber": ["S3", "S4", "S6", "S8"]},
+    {"id": "R13", "tipe": "metode", "jika": ["noda tanin (kopi, teh, buah)"], "mode": "dan", "maka": "metode noda tanin",
+     "saran": "Rendam atau bilas dengan air sejuk, longgarkan noda dengan deterjen cair, lalu cuci seperti biasa. Hindari amonia karena dapat membuat noda kopi, teh, dan buah menetap.", "sumber": ["S3", "S6"]},
+    {"id": "R14", "tipe": "metode", "jika": ["noda tinta"], "mode": "dan", "maka": "metode noda tinta",
+     "saran": "Untuk tinta pulpen, spons noda dengan alkohol (alkohol gosok) hingga basah, bilas tuntas, beri pra-pembersih, lalu cuci dengan air terpanas yang aman untuk kain. Jangan pakai susu, cara tradisional itu tidak dapat diandalkan.", "sumber": ["S1", "S2", "S7"]},
+    {"id": "R15", "tipe": "metode", "jika": ["noda kombinasi (minyak + protein)"], "mode": "dan", "maka": "metode noda kombinasi",
+     "saran": "Tangani dulu sebagai noda berminyak untuk mengangkat lemak, lalu tangani sebagai noda berbasis air. Bagian protein biasanya perlu produk berbahan enzim.", "sumber": ["S3"]},
+    {"id": "R16", "tipe": "metode", "jika": ["noda protein (darah, telur, susu, keringat)", "noda masih terlihat setelah dicuci", "kain tahan pemutih"], "mode": "dan", "maka": "metode lanjutan pemutih",
+     "saran": "Cuci ulang dengan pemutih yang aman untuk jenis kain tersebut.", "sumber": ["S8"]},
+    {"id": "R17", "tipe": "metode", "jika": ["noda tidak dikenal"], "mode": "dan", "maka": "metode noda tidak dikenal",
+     "saran": "Hindari air panas karena dapat menetapkan noda protein. Mulai dari air dingin, uji bahan pembersih di bagian kain yang tersembunyi, dan tangani secepat mungkin.", "sumber": ["S4"]},
+    {"id": "R18", "tipe": "peringatan", "jika": ["kain berlabel hanya boleh dry clean"], "mode": "dan", "maka": "peringatan kain dry clean",
+     "saran": "Jangan dicuci sendiri. Bawa ke binatu (dry cleaner) secepat mungkin dan beri tahu jenis nodanya.", "sumber": ["S2", "S1"]}
+  ]
+}
